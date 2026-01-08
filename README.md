@@ -1,4 +1,4 @@
-# water-quality
+# smart-water-health-monitor
 
 # Smart Community Health Monitoring & Early Warning System
 ### Water-Borne Disease Risk Detection (Prototype)
