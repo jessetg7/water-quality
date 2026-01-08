@@ -1,0 +1,33 @@
+<h3>System Control Panel</h3>
+
+<input id="pwd" placeholder="Password">
+<button onclick="unlock()">Unlock</button>
+
+<div id="panel" style="display:none">
+  <select id="water">
+    <option value="0">Safe</option>
+    <option value="1">Moderate</option>
+    <option value="2">Unsafe</option>
+  </select>
+
+  <select id="temp">
+    <option value="0">Cold</option>
+    <option value="1">Normal</option>
+    <option value="2">Mild Hot</option>
+    <option value="3">Hot</option>
+    <option value="4">Very Hot</option>
+  </select>
+
+  <button onclick="apply()">Apply</button>
+</div>
+
+<script>
+function unlock(){
+  if(pwd.value === "12345")
+    panel.style.display="block";
+}
+
+function apply(){
+  fetch(`http://192.168.4.1/control?key=admin123&water=${water.value}&temp=${temp.value}`);
+}
+</script>

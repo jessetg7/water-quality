@@ -1,0 +1,23 @@
+<h2>Community Water Health Monitor</h2>
+<div id="data"></div>
+<div id="status"></div>
+
+<script>
+const URL = "http://192.168.4.1/data";
+
+setInterval(() => {
+  fetch(URL).then(r=>r.json()).then(d=>{
+    data.innerHTML =
+      `pH: ${d.ph}<br>
+       TDS: ${d.tds} ppm<br>
+       Turbidity: ${d.turbidity} NTU<br>
+       Temp: ${d.temperature} °C`;
+
+    let s = "SAFE";
+    if (d.tds > 700 || d.turbidity > 5) s = "HIGH RISK";
+    else if (d.tds > 300) s = "MODERATE RISK";
+
+    status.innerHTML = `<b>Status:</b> ${s}`;
+  });
+}, 7000);
+</script>
